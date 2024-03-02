@@ -1,10 +1,11 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@100;300;400;500;600;700;800;900;1,100..900&display=swap');
 
 :root {
     --primary: #fe2c55;
 
     //Default layout
+    --default-horizontal-spacer: 24px;
     --default-header-height: 60px;
     --default-content-width: 1150px;
     --black: #000;
@@ -23,8 +24,8 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    //font-family: 'Roboto', sans-serif;
+    //font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
@@ -40,4 +41,27 @@ input,
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-style: inherit;
+}
+
+//Custom tippy toolip
+
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+        background-color: rgba(84, 84, 84, 0.92);
+        color: rgb(255, 255, 255);
+    }
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+        top: -8px;
+    }
+
+    .tippy-content {
+        padding: 8px 9px;
+    }
 }
