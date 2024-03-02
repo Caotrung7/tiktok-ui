@@ -6,10 +6,8 @@ import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBookBookmark,
-    faCamera,
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
@@ -28,7 +26,9 @@ import images from '~/assets/images';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import Menu from '~/components/Popper/Menu';
+import Menu from '~/components/MenuItem';
+import UploadIcon from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -162,7 +162,7 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -175,10 +175,11 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://3.bp.blogspot.com/-OY35bdfCIBE/U59BPeNvBqI/AAAAAAAARA4/moutkn2giXo/s1600/cristiano-ronaldo.jpg"
                                 alt="CT7"
+                                fallback="https://img.lovepik.com/element/40021/7866.png_1200.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
