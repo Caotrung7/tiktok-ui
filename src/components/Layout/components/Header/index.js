@@ -1,22 +1,17 @@
-import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBookBookmark,
     faCircleQuestion,
-    faCircleXmark,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faGear,
     faKeyboard,
     faLightbulb,
-    faMagnifyingGlass,
     faSignOut,
-    faSpinner,
     faUser,
     faVideo,
 } from '@fortawesome/free-solid-svg-icons';
@@ -24,11 +19,10 @@ import {
 import Button from '~/components/Button';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/MenuItem';
-import UploadIcon from '~/components/Icons';
+import { UploadIcon, IboxIcon, MessageIcon } from '~/components/Icons';
 import Image from '~/components/Image';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -62,15 +56,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
 
     //HANDLE LOGIC
     const handleMenuChange = (menuItem) => {
@@ -127,42 +113,25 @@ function Header() {
             <div className={cx('inner')}>
                 <img src={images.logo} alt="tiktok" />
 
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Acounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="search acounts and videos" spellCheck={false} />
-
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
 
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                            <Tippy content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Messages" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <IboxIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
