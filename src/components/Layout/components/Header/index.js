@@ -15,6 +15,8 @@ import {
     faUser,
     faVideo,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
 
 import Button from '~/components/Button';
 import images from '~/assets/images';
@@ -111,7 +113,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="tiktok" />
+                </Link>
 
                 <Search />
 

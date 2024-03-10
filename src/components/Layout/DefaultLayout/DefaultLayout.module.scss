@@ -5,10 +5,11 @@
 }
 
 .container {
-    display: flex;
+    //min-height: 1000px;
     width: var(--default-content-width);
-    min-height: 1000px;
     padding: 0 var(--default-horizontal-spacer);
+    display: flex;
+    margin-top: var(--default-header-height);
 }
 
 .content {
