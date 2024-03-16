@@ -18,10 +18,10 @@ import {
 import { Link } from 'react-router-dom';
 import config from '~/config';
 
-import Button from '~/components/Button';
+import Button from '~/components/Button/Button';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
-import Menu from '~/components/MenuItem';
+import Menu from '~/components/Popper/Menu';
 import { UploadIcon, IboxIcon, MessageIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
